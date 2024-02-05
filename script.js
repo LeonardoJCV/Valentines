@@ -9,6 +9,15 @@ let currentImageIndex = 0;
 const clapAudio = new Audio('./Effects/Crowd Laughs Cheering And Applauding 1.wav');
 clapAudio.volume = 0.1;
 
+const phrases = ["Sure?", "Really Sure?", "Think again", "Last chance!"];
+let currentPhraseIndex = 0;
+
+function getNextPhrase() {
+    const phrase = phrases[currentPhraseIndex];
+    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+    return phrase;
+}
+
 function handleNoClick() {
     const noButton = document.getElementById("no");
     const yesButton = document.getElementById("yes");
@@ -16,9 +25,7 @@ function handleNoClick() {
     const currentImageId = images[currentImageIndex];
     const currentImage = document.getElementById(currentImageId);
 
-    const randomPhrases = ["NO", "Sure?", "Really Sure?", "Think again", "Last chance!"];
-    const randomIndex = Math.floor(Math.random() * randomPhrases.length);
-    const phrase = randomPhrases[randomIndex];
+    const phrase = getNextPhrase();
 
     if (phrase === "NO") {
         yesButton.style.transform = "scale(1.2)";
@@ -44,6 +51,15 @@ function handleNoClick() {
     }
 }
 
+// Restante do código permanece inalterado
+
+function handleYesClick() {
+    document.body.style.background = "linear-gradient(45deg, #ffcc00, #ff99cc)";
+    confettiRain();
+    clapAudio.play();
+    blinkImages();
+}
+
 function fadeInImage(imageElement) {
     let opacity = 0;
     const fadeInInterval = setInterval(function() {
@@ -54,13 +70,6 @@ function fadeInImage(imageElement) {
             clearInterval(fadeInInterval);
         }
     }, 100);
-}
-
-function handleYesClick() {
-    document.body.style.background = "linear-gradient(45deg, #ffcc00, #ff99cc)";
-    confettiRain();
-    clapAudio.play();
-    blinkImages();
 }
 
 function blinkImages() {
