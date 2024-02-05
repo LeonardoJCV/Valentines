@@ -27,14 +27,14 @@ body {
 
 #rose {
     position: absolute;
-    left: 400px;
+    left: 150px;
     top: 250px;
     opacity: 0;
 }
 
 #purple {
     position: absolute;
-    right: 400px;
+    right: 150px;
     top: 250px;
     opacity: 0;
 }
@@ -42,7 +42,7 @@ body {
 #shinning {
     position: absolute;
     right: 640px;
-    top: 500px;
+    top: 400px;
     opacity: 0;
 }
 
